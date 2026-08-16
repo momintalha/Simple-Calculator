@@ -43,3 +43,20 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Ignoring directories
+android/
+ios/
+linux/
+macos/
+test/
+web/
+windows/
+.flutter-plugins-dependencies
+.metadata
+analysis_options.yaml
+calculator.iml
+pubspec.lock
+README.md
+
+

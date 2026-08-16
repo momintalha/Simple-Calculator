@@ -68,7 +68,7 @@ class CalculatorScreen extends StatelessWidget {
         ),
         actions: [
           AppButton(
-            bShape: Icons.history,
+            bicon: Icons.history,
             bColor: Colors.blue,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => ResultHistoryScreen()),

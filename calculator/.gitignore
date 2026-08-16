@@ -45,13 +45,13 @@ app.*.map.json
 /android/app/release
 
 # Ignoring directories
-android/
-ios/
-linux/
-macos/
-test/
-web/
-windows/
+/android/
+/ios/
+/linux/
+/macos/
+/test/
+/web/
+/windows/
 .flutter-plugins-dependencies
 .metadata
 analysis_options.yaml

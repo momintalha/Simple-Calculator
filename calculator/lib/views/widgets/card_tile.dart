@@ -40,14 +40,18 @@ class CardTile extends StatelessWidget {
                     children: [
                       AutoSizeText(
                         calc,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black,
                           fontFamily: 'Nunito',
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      Text(
+                      AutoSizeText(
                         res,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'Nunito',
@@ -60,13 +64,18 @@ class CardTile extends StatelessWidget {
                 ],
               ),
 
-              Text(
-                time,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontFamily: 'Nunito',
-                  color: Colors.black54,
-                ),
+              Row(
+                children: [
+                  Text(
+                    time,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontFamily: 'Nunito',
+                      color: Colors.black54,
+                    ),
+                  ),
+                  Icon(Icons.access_time, color: Colors.black54, size: 14),
+                ],
               ),
             ],
           ),

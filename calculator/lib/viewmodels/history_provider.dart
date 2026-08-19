@@ -10,12 +10,12 @@ class HistoryProvider extends ChangeNotifier {
 
   List<Map<String, dynamic>> get history => _history;
 
-  void loadHistory() async {
+  Future<void> loadHistory() async {
     _history = await DatabaseService.dbService.fetch();
     notifyListeners();
   }
 
-  void deleteHistory() async {
+  Future<void> deleteHistory() async {
     bool? check = await DatabaseService.dbService.delete();
 
     if (check!) {
@@ -24,7 +24,7 @@ class HistoryProvider extends ChangeNotifier {
     }
   }
 
-  void addHistory({
+  Future<void> addHistory({
     required String calc,
     required String res,
     required String t,

@@ -2,10 +2,16 @@ import 'package:calculator/models/calculator_model.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
+import 'package:calculator/services/shared_preferences.dart';
 
 class CalculatorProvider extends ChangeNotifier {
+  CalculatorProvider() {
+    loadOnStartup();
+  }
+
   final String _operators = '+-×÷%.';
   final CalculatorModel _calculatorModel = CalculatorModel();
+  final PreferencesService _prefsService = PreferencesService();
 
   bool _isdot = true;
 
@@ -156,5 +162,21 @@ class CalculatorProvider extends ChangeNotifier {
     }
 
     return temp;
+  }
+
+  void loadOnStartup() async {
+    final display = await _prefsService.load();
+    _calculatorModel.input = display[PreferencesService.calc]!;
+    _calculatorModel.output = display[PreferencesService.res]!;
+    notifyListeners();
+  }
+
+  void saveBeforeClose() async {
+    if (_calculatorModel.output.length > 1) {
+      await _prefsService.save(
+        calculation: _calculatorModel.input,
+        result: _calculatorModel.output,
+      );
+    }
   }
 }

@@ -1,9 +1,10 @@
+import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
 import 'package:calculator/views/widgets/app_button.dart';
 import 'package:calculator/views/widgets/card_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:calculator/services/database_service.dart';
+import 'package:provider/provider.dart';
 
 class ResultHistoryScreen extends StatelessWidget {
   const ResultHistoryScreen({super.key});
@@ -11,6 +12,7 @@ class ResultHistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var hisP = Provider.of<HistoryProvider>(context);
+    var calcP = Provider.of<CalculatorProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,21 +32,26 @@ class ResultHistoryScreen extends StatelessWidget {
         ],
       ),
       body: Consumer<HistoryProvider>(
-        builder: (_, provider, _) => ListView.builder(
-          itemCount: provider.history.length,
+        builder: (_, hisP, _) => ListView.builder(
+          itemCount: hisP.history.length,
           itemBuilder: (context, index) => Container(
             padding: EdgeInsets.symmetric(horizontal: 5),
-            child: (provider.history.isEmpty)
+            child: (hisP.history.isEmpty)
                 ? Container()
                 : Column(
                     children: [
                       CardTile(
-                        calc:
-                            '${hisP.history[index][DatabaseService.dbService.cInput]}',
+                        onPressed: () {
+                          Navigator.pop(context);
+                          calcP.historyBack(
+                            hisP.history[index][DatabaseService.cInput],
+                            hisP.history[index][DatabaseService.cOutput],
+                          );
+                        },
+                        calc: '${hisP.history[index][DatabaseService.cInput]}',
                         res:
-                            '= ${hisP.history[index][DatabaseService.dbService.cOutput]}',
-                        time:
-                            '${hisP.history[index][DatabaseService.dbService.cTime]}',
+                            '= ${hisP.history[index][DatabaseService.cOutput]}',
+                        time: '${hisP.history[index][DatabaseService.cTime]}',
                       ),
                       SizedBox(height: 5),
                     ],

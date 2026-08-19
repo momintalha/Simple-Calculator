@@ -4,10 +4,10 @@ import 'package:sqflite/sqflite.dart';
 
 class DatabaseService {
   DatabaseService._();
-  final tName = 'History';
-  final cInput = 'input';
-  final cOutput = 'output';
-  final cTime = 'time';
+  static const String tName = 'History';
+  static const cInput = 'input';
+  static const cOutput = 'output';
+  static const cTime = 'time';
 
   static final dbService = DatabaseService._();
 

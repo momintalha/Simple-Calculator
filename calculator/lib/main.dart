@@ -1,3 +1,4 @@
+import 'package:calculator/bootstrap/app_life_cycle_handler.dart';
 import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
 import 'package:calculator/views/calculator_screen.dart';
@@ -16,7 +17,7 @@ void main() {
           create: (context) => HistoryProvider(),
         ),
       ],
-      child: const MyApp(),
+      child: AppLifeCycleHandler(const MyApp()),
     ),
   );
   SystemChrome.setPreferredOrientations([

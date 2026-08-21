@@ -1,18 +1,23 @@
 import 'package:calculator/bootstrap/app_life_cycle_handler.dart';
 import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
-import 'package:calculator/views/calculator_screen.dart';
+import 'package:calculator/views/screens/calculator_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsBinding widgetBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetBinding);
+
+  final calcP = CalculatorProvider();
+  await calcP.loadOnStartup();
+
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<CalculatorProvider>(
-          create: (context) => CalculatorProvider(),
-        ),
+        ChangeNotifierProvider.value(value: calcP),
         ChangeNotifierProvider<HistoryProvider>(
           create: (context) => HistoryProvider(),
         ),

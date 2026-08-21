@@ -1,6 +1,7 @@
 import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class AppLifeCycleHandler extends StatefulWidget {
   final Widget child;
@@ -14,6 +15,7 @@ class _AppLifeCycleHandlerState extends State<AppLifeCycleHandler>
     with WidgetsBindingObserver {
   @override
   void initState() {
+    FlutterNativeSplash.remove();
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }

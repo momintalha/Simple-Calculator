@@ -21,7 +21,7 @@ class AboutTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 17,
+      spacing: 10,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
@@ -30,7 +30,7 @@ class AboutTile extends StatelessWidget {
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: iconBackgroundColor,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(10),
           ),
           child: Image.asset(icon),
         ),
@@ -41,7 +41,11 @@ class AboutTile extends StatelessWidget {
             Text(title, style: titleTextStyle),
             Text(
               subtitle,
-              style: TextStyle(color: Colors.black38, fontSize: 16),
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 14,
+                fontFamily: 'Nunito',
+              ),
             ),
           ],
         ),

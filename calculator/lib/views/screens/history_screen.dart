@@ -1,7 +1,7 @@
 import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
 import 'package:calculator/views/widgets/app_button.dart';
-import 'package:calculator/views/widgets/card_tile.dart';
+import 'package:calculator/views/widgets/history_card.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/services/database_service.dart';
 import 'package:provider/provider.dart';
@@ -37,7 +37,13 @@ class ResultHistoryScreen extends StatelessWidget {
           itemBuilder: (context, index) => Container(
             padding: EdgeInsets.symmetric(horizontal: 5),
             child: (hisP.history.isEmpty)
-                ? Container()
+                ? Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'No data yet',
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                  )
                 : Column(
                     children: [
                       CardTile(

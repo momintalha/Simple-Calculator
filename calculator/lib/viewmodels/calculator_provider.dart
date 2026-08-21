@@ -164,19 +164,27 @@ class CalculatorProvider extends ChangeNotifier {
     return temp;
   }
 
-  void loadOnStartup() async {
-    final display = await _prefsService.load();
-    _calculatorModel.input = display[PreferencesService.calc]!;
-    _calculatorModel.output = display[PreferencesService.res]!;
+  Future<void> loadOnStartup() async {
+    final savedData = await _prefsService.load();
+    if (!savedData.values.contains(null)) {
+      _calculatorModel.input = savedData[PreferencesService.calc]!;
+      _calculatorModel.output = savedData[PreferencesService.res]!;
+    }
     notifyListeners();
   }
 
-  void saveBeforeClose() async {
-    if (_calculatorModel.output.length > 1) {
+  Future<void> saveBeforeClose() async {
+    if (_calculatorModel.input.isNotEmpty) {
       await _prefsService.save(
         calculation: _calculatorModel.input,
         result: _calculatorModel.output,
       );
     }
+  }
+
+  void historyBack(String calc, String res) {
+    _calculatorModel.input = calc;
+    _calculatorModel.output = res;
+    notifyListeners();
   }
 }

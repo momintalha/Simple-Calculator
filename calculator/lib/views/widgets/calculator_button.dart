@@ -2,31 +2,29 @@ import 'package:flutter/material.dart';
 
 class CalcButton extends StatelessWidget {
   final String label;
-  final VoidCallback callback;
   final Color? bColor;
   final Color? tColor;
-  final bool onLongPress;
+  final VoidCallback onTap;
+  final VoidCallback? onLongTap;
 
   const CalcButton({
     super.key,
     required this.label,
-    required this.callback,
+    required this.onTap,
     this.tColor,
     this.bColor = Colors.white,
-    this.onLongPress = false,
+    this.onLongTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        callback();
+        onTap();
       },
-      onLongPress: (onLongPress)
-          ? () {
-              callback();
-            }
-          : null,
+      onLongPress: () {
+        if (onLongTap != null) onLongTap!();
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: bColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

@@ -4,9 +4,21 @@ import 'package:calculator/views/widgets/app_button.dart';
 import 'package:calculator/views/widgets/calculator_button_grid.dart';
 import 'package:calculator/views/widgets/display_panel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-class CalculatorScreen extends StatelessWidget {
+class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
+
+  @override
+  State<CalculatorScreen> createState() => _CalculatorScreenState();
+}
+
+class _CalculatorScreenState extends State<CalculatorScreen> {
+  @override
+  void initState() {
+    FlutterNativeSplash.remove();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +40,11 @@ class CalculatorScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        height: double.maxFinite,
         width: double.maxFinite,
+        height: double.maxFinite,
         padding: EdgeInsets.symmetric(vertical: 20),
         color: Colors.white,
         child: Column(
-          spacing: 20,
           children: [
             Expanded(
               flex: 2,
@@ -42,6 +53,7 @@ class CalculatorScreen extends StatelessWidget {
                 child: DisplayPanel(),
               ),
             ),
+            SizedBox(height: 20),
             Expanded(
               flex: 3,
               child: SizedBox(

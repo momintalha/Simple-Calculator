@@ -9,7 +9,6 @@ class DisplayPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('Build method called..');
     return Consumer<CalculatorProvider>(
       builder: (context, value, _) {
         return Container(

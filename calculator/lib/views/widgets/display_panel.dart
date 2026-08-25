@@ -1,4 +1,3 @@
-import 'package:calculator/utils/app_colors.dart';
 import 'package:calculator/views/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/viewmodels/calculator_provider.dart';
@@ -13,7 +12,7 @@ class DisplayPanel extends StatelessWidget {
       builder: (context, value, _) {
         return Container(
           decoration: BoxDecoration(
-            color: AppColors().displayPanelcolor,
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(35),
           ),
           child: Column(

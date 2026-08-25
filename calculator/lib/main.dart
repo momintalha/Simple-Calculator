@@ -1,4 +1,5 @@
 import 'package:calculator/bootstrap/app_life_cycle_handler.dart';
+import 'package:calculator/utils/theme/theme.dart';
 import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
 import 'package:calculator/views/screens/calculator_screen.dart';
@@ -39,16 +40,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'A calculator with basic operations.',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.blue),
-        textTheme: TextTheme(
-          labelMedium: TextStyle(
-            fontSize: 40,
-            color: Colors.black87,
-            fontFamily: 'Montono',
-          ),
-        ),
-      ),
+      themeMode: ThemeMode.system,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       home: const CalculatorScreen(),
     );
   }

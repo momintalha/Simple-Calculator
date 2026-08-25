@@ -25,11 +25,7 @@ class MyTextField extends StatelessWidget {
         text,
         textDirection: TextDirection.ltr,
         maxLines: maxLines,
-        style: TextStyle(
-          fontSize: tFontSize,
-          color: tColor,
-          fontFamily: 'Nunito',
-        ),
+        style: Theme.of(context).textTheme.displayMedium,
       ),
     );
   }

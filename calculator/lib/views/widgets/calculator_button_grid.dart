@@ -1,4 +1,3 @@
-import 'package:calculator/utils/app_colors.dart';
 import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
 import 'package:calculator/views/widgets/calculator_button.dart';
@@ -56,8 +55,7 @@ class CalcButtonGrid extends StatelessWidget {
               case 'AC':
                 return CalcButton(
                   label: buttonGrid[index],
-                  tColor: Colors.blue,
-                  bColor: AppColors().calcButtonColor,
+                  buttonType: false,
                   onTap: () {
                     calcP.onTapAC();
                   },
@@ -65,8 +63,7 @@ class CalcButtonGrid extends StatelessWidget {
               case '⌫':
                 return CalcButton(
                   label: buttonGrid[index],
-                  tColor: Colors.blue,
-                  bColor: AppColors().calcButtonColor,
+                  buttonType: false,
                   onTap: () {
                     calcP.onTapRemove();
                   },
@@ -77,8 +74,7 @@ class CalcButtonGrid extends StatelessWidget {
               case '=':
                 return CalcButton(
                   label: buttonGrid[index],
-                  tColor: Colors.white,
-                  bColor: Colors.blue,
+                  buttonType: false,
                   onTap: () {
                     calcP.onTapEqual(
                       hisP,
@@ -99,8 +95,6 @@ class CalcButtonGrid extends StatelessWidget {
                   '9':
                 return CalcButton(
                   label: buttonGrid[index],
-                  tColor: Colors.black54,
-                  bColor: Colors.white,
                   onTap: () {
                     calcP.appendNumber(calcButtonValue: buttonGrid[index]);
                   },
@@ -108,8 +102,7 @@ class CalcButtonGrid extends StatelessWidget {
               case '%' || '÷' || '×' || '-' || '+':
                 return CalcButton(
                   label: buttonGrid[index],
-                  tColor: Colors.blue,
-                  bColor: AppColors().calcButtonColor,
+                  buttonType: false,
                   onTap: () {
                     calcP.appendOperator(operator: buttonGrid[index]);
                   },
@@ -117,8 +110,6 @@ class CalcButtonGrid extends StatelessWidget {
               case '.':
                 return CalcButton(
                   label: buttonGrid[index],
-                  tColor: Colors.black54,
-                  bColor: Colors.white,
                   onTap: () {
                     calcP.appendDot();
                   },

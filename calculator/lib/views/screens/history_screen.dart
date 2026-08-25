@@ -1,7 +1,5 @@
 import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
-import 'package:calculator/views/widgets/app_button.dart';
-import 'package:calculator/views/widgets/history_card.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/services/database_service.dart';
 import 'package:provider/provider.dart';
@@ -22,48 +20,78 @@ class ResultHistoryScreen extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          AppButton(
-            bicon: Icons.delete,
-            bColor: Colors.blue,
+          IconButton(
+            style: Theme.of(context).elevatedButtonTheme.style,
             onPressed: () {
               hisP.deleteHistory();
             },
+            icon: Icon(Icons.delete),
           ),
         ],
       ),
-      body: Consumer<HistoryProvider>(
-        builder: (_, hisP, _) => ListView.builder(
-          itemCount: hisP.history.length,
-          itemBuilder: (context, index) => Container(
-            padding: EdgeInsets.symmetric(horizontal: 5),
-            child: (hisP.history.isEmpty)
-                ? Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'No data yet',
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
-                  )
-                : Column(
-                    children: [
-                      CardTile(
-                        onPressed: () {
+      body: Column(
+        children: [
+          Consumer<HistoryProvider>(
+            builder: (_, hisP, _) => ListView.builder(
+              itemCount: hisP.history.length,
+              itemBuilder: (context, index) => Container(
+                padding: EdgeInsets.symmetric(horizontal: 5),
+                child: (hisP.history.isEmpty)
+                    ? Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'No data yet',
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                        ),
+                      )
+                    : InkWell(
+                        onTap: () {
                           Navigator.pop(context);
                           calcP.historyBack(
                             hisP.history[index][DatabaseService.cInput],
                             hisP.history[index][DatabaseService.cOutput],
                           );
                         },
-                        calc: '${hisP.history[index][DatabaseService.cInput]}',
-                        res:
-                            '= ${hisP.history[index][DatabaseService.cOutput]}',
-                        time: '${hisP.history[index][DatabaseService.cTime]}',
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          spacing: 5,
+                          children: [
+                            Text(
+                              '${hisP.history[index][DatabaseService.cInput]}',
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
+                            Text(
+                              '= ${hisP.history[index][DatabaseService.cOutput]}',
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
+                          ],
+                        ),
                       ),
-                      SizedBox(height: 5),
-                    ],
-                  ),
+              ),
+            ),
           ),
-        ),
+          Divider(
+            color: Colors.black12,
+            height: 0.5,
+            thickness: 0.5,
+            indent: 10,
+            endIndent: 10,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            spacing: 5,
+            children: [
+              Text(
+                calcP.input,
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+              Text(
+                calcP.output,
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

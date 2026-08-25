@@ -1,6 +1,5 @@
 import 'package:calculator/views/screens/about_screen.dart';
 import 'package:calculator/views/screens/history_screen.dart';
-import 'package:calculator/views/widgets/app_button.dart';
 import 'package:calculator/views/widgets/calculator_button_grid.dart';
 import 'package:calculator/views/widgets/display_panel.dart';
 import 'package:flutter/material.dart';
@@ -27,15 +26,17 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       appBar: AppBar(
         title: Text(
           "Calculator",
-          style: TextStyle(fontFamily: 'Montono', fontWeight: FontWeight.bold),
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
         actions: [
-          AppButton(
-            bicon: Icons.history,
-            bColor: Colors.blue,
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => ResultHistoryScreen()),
-            ),
+          IconButton(
+            style: Theme.of(context).elevatedButtonTheme.style,
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ResultHistoryScreen()),
+              );
+            },
+            icon: Icon(Icons.history),
           ),
         ],
       ),

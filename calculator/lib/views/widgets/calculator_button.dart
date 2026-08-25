@@ -1,9 +1,9 @@
+import 'package:calculator/utils/theme/custom_themes/theme_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class CalcButton extends StatelessWidget {
   final String label;
-  final Color? bColor;
-  final Color? tColor;
+  final bool buttonType;
   final VoidCallback onTap;
   final VoidCallback? onLongTap;
 
@@ -11,13 +11,13 @@ class CalcButton extends StatelessWidget {
     super.key,
     required this.label,
     required this.onTap,
-    this.tColor,
-    this.bColor = Colors.white,
     this.onLongTap,
+    this.buttonType = true,
   });
 
   @override
   Widget build(BuildContext context) {
+    final calcButtonStyle = Theme.of(context).extension<ThemeElevatedButton>()!;
     return ElevatedButton(
       onPressed: () {
         onTap();
@@ -25,19 +25,10 @@ class CalcButton extends StatelessWidget {
       onLongPress: () {
         if (onLongTap != null) onLongTap!();
       },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: bColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: tColor,
-          fontSize: 18,
-          fontFamily: 'Nunito',
-          fontWeight: FontWeight.w900,
-        ),
-      ),
+      style: (buttonType)
+          ? calcButtonStyle.numberButtonStyle
+          : calcButtonStyle.operatorButtonStyle,
+      child: Text(label, style: Theme.of(context).textTheme.labelSmall),
     );
   }
 }

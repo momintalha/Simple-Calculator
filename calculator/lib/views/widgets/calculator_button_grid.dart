@@ -2,7 +2,6 @@ import 'package:calculator/viewmodels/calculator_provider.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
 import 'package:calculator/views/widgets/calculator_button.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class CalcButtonGrid extends StatelessWidget {
@@ -76,10 +75,7 @@ class CalcButtonGrid extends StatelessWidget {
                   label: buttonGrid[index],
                   buttonType: false,
                   onTap: () {
-                    calcP.onTapEqual(
-                      hisP,
-                      DateFormat('hh:mm:s a').format(DateTime.now()),
-                    );
+                    calcP.onTapEqual(hisP);
                   },
                 );
               case '0' ||

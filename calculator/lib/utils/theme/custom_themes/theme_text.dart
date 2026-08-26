@@ -1,17 +1,23 @@
+import 'package:calculator/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class ThemeText {
-  ThemeText._();
+class ThemeText extends ThemeExtension<ThemeText> {
+  final TextTheme numberButtonTextTheme;
+  final TextTheme operatorButtonTextTheme;
+
+  ThemeText({
+    required this.numberButtonTextTheme,
+    required this.operatorButtonTextTheme,
+  });
 
   static TextTheme lightTheme = TextTheme(
     labelSmall: TextStyle(
-      color: Colors.black,
+      color: AppColors.textDark,
       fontSize: 18,
       fontFamily: 'Nunito',
-      fontWeight: FontWeight.w900,
     ),
     displayMedium: TextStyle(
-      color: Colors.black,
+      color: AppColors.textDark,
       fontSize: 40,
       fontFamily: 'Nunito',
     ),
@@ -29,4 +35,25 @@ class ThemeText {
       fontFamily: 'Nunito',
     ),
   );
+
+  @override
+  ThemeText copyWith({
+    TextTheme? numberButtonTextTheme,
+    TextTheme? operatorButtonTextTheme,
+  }) {
+    return ThemeText(
+      numberButtonTextTheme:
+          numberButtonTextTheme ?? this.numberButtonTextTheme,
+      operatorButtonTextTheme:
+          operatorButtonTextTheme ?? this.operatorButtonTextTheme,
+    );
+  }
+
+  @override
+  ThemeExtension<ThemeText> lerp(
+    covariant ThemeExtension<ThemeText>? other,
+    double t,
+  ) {
+    return this;
+  }
 }

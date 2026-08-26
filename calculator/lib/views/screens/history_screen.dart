@@ -29,69 +29,72 @@ class ResultHistoryScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Consumer<HistoryProvider>(
-            builder: (_, hisP, _) => ListView.builder(
-              itemCount: hisP.history.length,
-              itemBuilder: (context, index) => Container(
-                padding: EdgeInsets.symmetric(horizontal: 5),
-                child: (hisP.history.isEmpty)
-                    ? Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          'No data yet',
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+      body: Consumer<HistoryProvider>(
+        builder: (_, hisP, _) => Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          spacing: 1,
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: hisP.history.length,
+                itemBuilder: (context, index) => Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: (hisP.history.isEmpty)
+                      ? Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'No data yet',
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                        )
+                      : InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                            calcP.historyBack(
+                              hisP.history[index][DatabaseService.cInput],
+                              hisP.history[index][DatabaseService.cOutput],
+                            );
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                '${hisP.history[index][DatabaseService.cInput]}',
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
+                              Text(
+                                '= ${hisP.history[index][DatabaseService.cOutput]}',
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
+                              SizedBox(height: 5),
+                            ],
+                          ),
                         ),
-                      )
-                    : InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                          calcP.historyBack(
-                            hisP.history[index][DatabaseService.cInput],
-                            hisP.history[index][DatabaseService.cOutput],
-                          );
-                        },
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          spacing: 5,
-                          children: [
-                            Text(
-                              '${hisP.history[index][DatabaseService.cInput]}',
-                              style: Theme.of(context).textTheme.labelSmall,
-                            ),
-                            Text(
-                              '= ${hisP.history[index][DatabaseService.cOutput]}',
-                              style: Theme.of(context).textTheme.labelSmall,
-                            ),
-                          ],
-                        ),
-                      ),
+                ),
               ),
             ),
-          ),
-          Divider(
-            color: Colors.black12,
-            height: 0.5,
-            thickness: 0.5,
-            indent: 10,
-            endIndent: 10,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            spacing: 5,
-            children: [
-              Text(
-                calcP.input,
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
-              Text(
-                calcP.output,
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
-            ],
-          ),
-        ],
+            Divider(
+              color: Colors.black12,
+              height: 0.5,
+              thickness: 0.5,
+              indent: 24,
+              endIndent: 24,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  calcP.input,
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+                Text(
+                  calcP.output,
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

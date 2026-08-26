@@ -7,7 +7,6 @@ class DatabaseService {
   static const String tName = 'History';
   static const cInput = 'input';
   static const cOutput = 'output';
-  static const cTime = 'time';
 
   static final dbService = DatabaseService._();
 
@@ -23,7 +22,7 @@ class DatabaseService {
     final db = await openDatabase(
       path,
       onCreate: ((db, _) => db.execute(
-        'CREATE TABLE $tName (id INTEGER PRIMARY KEY AUTOINCREMENT, $cInput TEXT, $cOutput TEXT, $cTime TEXT)',
+        'CREATE TABLE $tName (id INTEGER PRIMARY KEY AUTOINCREMENT, $cInput TEXT, $cOutput TEXT)',
       )),
       version: 1,
     );
@@ -34,14 +33,9 @@ class DatabaseService {
   Future<bool?> insert({
     required String calculation,
     required String result,
-    required String time,
   }) async {
     var db = await getDb();
-    final n = await db?.insert(tName, {
-      cInput: calculation,
-      cOutput: result,
-      cTime: time,
-    });
+    final n = await db?.insert(tName, {cInput: calculation, cOutput: result});
     return n! > 0;
   }
 

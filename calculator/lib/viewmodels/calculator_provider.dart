@@ -67,14 +67,13 @@ class CalculatorProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void onTapEqual(HistoryProvider provider, String time) {
+  void onTapEqual(HistoryProvider provider) {
     _calculatorModel.isResultShown = true;
     if (_calculatorModel.input.isNotEmpty &&
         _calculatorModel.output.isNotEmpty) {
       provider.addHistory(
         calc: _calculatorModel.input,
         res: _calculatorModel.output,
-        t: time,
       );
     }
 

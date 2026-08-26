@@ -24,15 +24,10 @@ class HistoryProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> addHistory({
-    required String calc,
-    required String res,
-    required String t,
-  }) async {
+  Future<void> addHistory({required String calc, required String res}) async {
     bool? check = await DatabaseService.dbService.insert(
       calculation: calc,
       result: res,
-      time: t,
     );
     debugPrint('$check');
     if (check!) {

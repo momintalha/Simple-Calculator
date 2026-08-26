@@ -1,4 +1,5 @@
 import 'package:calculator/utils/theme/custom_themes/theme_elevated_button.dart';
+import 'package:calculator/utils/theme/custom_themes/theme_text.dart';
 import 'package:flutter/material.dart';
 
 class CalcButton extends StatelessWidget {
@@ -18,6 +19,8 @@ class CalcButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final calcButtonStyle = Theme.of(context).extension<ThemeElevatedButton>()!;
+    final calcButtonTextTheme = Theme.of(context).extension<ThemeText>()!;
+
     return ElevatedButton(
       onPressed: () {
         onTap();
@@ -28,7 +31,12 @@ class CalcButton extends StatelessWidget {
       style: (buttonType)
           ? calcButtonStyle.numberButtonStyle
           : calcButtonStyle.operatorButtonStyle,
-      child: Text(label, style: Theme.of(context).textTheme.labelSmall),
+      child: Text(
+        label,
+        style: (buttonType)
+            ? calcButtonTextTheme.numberButtonTextTheme.labelSmall
+            : calcButtonTextTheme.operatorButtonTextTheme.labelSmall,
+      ),
     );
   }
 }

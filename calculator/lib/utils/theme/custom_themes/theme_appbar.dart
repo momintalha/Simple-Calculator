@@ -5,7 +5,7 @@ class ThemeAppbar {
   ThemeAppbar._();
 
   static AppBarTheme lightTheme = AppBarTheme(
-    backgroundColor: AppColors.appButtonLight,
+    backgroundColor: AppColors.appbarLight,
     centerTitle: true,
     titleTextStyle: TextStyle(
       fontSize: 24,
@@ -16,7 +16,7 @@ class ThemeAppbar {
   );
 
   static AppBarTheme darkTheme = AppBarTheme(
-    backgroundColor: AppColors.appButtonDark,
+    backgroundColor: AppColors.appbarDark,
     centerTitle: true,
     titleTextStyle: TextStyle(
       fontSize: 24,

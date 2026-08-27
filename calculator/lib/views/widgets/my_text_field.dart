@@ -1,31 +1,32 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
   final String text;
   final int maxLines;
-  final Alignment alignment;
-  final double tFontSize;
-  final Color tColor;
+  final TextAlign textAlign;
+  final bool isLarge;
 
   const MyTextField(
     this.text, {
     super.key,
     required this.maxLines,
-    required this.alignment,
-    required this.tFontSize,
-    required this.tColor,
+    this.textAlign = TextAlign.right,
+    this.isLarge = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: alignment,
-      child: AutoSizeText(
+      alignment: Alignment.bottomRight,
+      child: Text(
         text,
         textDirection: TextDirection.ltr,
+        textAlign: textAlign,
+        softWrap: true,
         maxLines: maxLines,
-        style: Theme.of(context).textTheme.displayMedium,
+        style: (isLarge)
+            ? Theme.of(context).textTheme.displayMedium
+            : Theme.of(context).textTheme.displaySmall,
       ),
     );
   }

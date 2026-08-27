@@ -10,7 +10,9 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     colorScheme: ColorScheme.light(
-      surfaceContainerHighest: AppColors.displayPanelDark,
+      primary: Colors.black12,
+      primaryContainer: AppColors.backgroundLight,
+      surfaceContainerHighest: AppColors.displayPanelLight,
     ),
     elevatedButtonTheme: ThemeElevatedButton.lightTheme,
     textTheme: ThemeText.lightTheme,
@@ -25,6 +27,7 @@ class AppTheme {
         ),
         operatorButtonStyle: ElevatedButton.styleFrom(
           backgroundColor: AppColors.operatorButtonLight,
+          shadowColor: Color(0xffe8f6f6),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(16),
           ),
@@ -34,14 +37,14 @@ class AppTheme {
         numberButtonTextTheme: TextTheme(
           labelSmall: TextStyle(
             color: AppColors.numberButtonLabelDark,
-            fontSize: 18,
+            fontSize: 22,
             fontFamily: 'Nunito',
           ),
         ),
         operatorButtonTextTheme: TextTheme(
           labelSmall: TextStyle(
             color: AppColors.operatorButtonLabelDark,
-            fontSize: 18,
+            fontSize: 20,
             fontFamily: 'Nunito',
           ),
         ),
@@ -52,7 +55,9 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     colorScheme: ColorScheme.dark(
-      surfaceContainerHighest: AppColors.displayPanelLight,
+      primary: Colors.white38,
+      primaryContainer: AppColors.backgroundDark,
+      surfaceContainerHighest: AppColors.displayPanelDark,
     ),
     elevatedButtonTheme: ThemeElevatedButton.darkTheme,
     textTheme: ThemeText.darkTheme,
@@ -67,6 +72,7 @@ class AppTheme {
         ),
         operatorButtonStyle: ElevatedButton.styleFrom(
           backgroundColor: AppColors.operatorButtonDark,
+          shadowColor: Colors.lightBlueAccent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(16),
           ),
@@ -76,14 +82,14 @@ class AppTheme {
         numberButtonTextTheme: TextTheme(
           labelSmall: TextStyle(
             color: AppColors.numberButtonLabelLight,
-            fontSize: 18,
+            fontSize: 22,
             fontFamily: 'Nunito',
           ),
         ),
         operatorButtonTextTheme: TextTheme(
           labelSmall: TextStyle(
             color: AppColors.operatorButtonLabelDark,
-            fontSize: 18,
+            fontSize: 20,
             fontFamily: 'Nunito',
           ),
         ),

@@ -22,44 +22,78 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AboutScreen(),
       appBar: AppBar(
         title: Text(
-          "Calculator",
-          style: Theme.of(context).appBarTheme.titleTextStyle,
+          'Calculator',
+          style: TextStyle(color: Colors.blue, fontFamily: 'Nunito'),
         ),
+        centerTitle: false,
         actions: [
           IconButton(
             style: Theme.of(context).elevatedButtonTheme.style,
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ResultHistoryScreen()),
-              );
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => AboutScreen()));
             },
-            icon: Icon(Icons.history),
+            icon: Icon(Icons.info),
           ),
         ],
       ),
       body: Container(
         width: double.maxFinite,
         height: double.maxFinite,
-        padding: EdgeInsets.symmetric(vertical: 20),
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.primaryContainer,
         child: Column(
           children: [
             Expanded(
-              flex: 2,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.95,
-                child: DisplayPanel(),
-              ),
-            ),
-            SizedBox(height: 20),
-            Expanded(
               flex: 3,
               child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: CalcButtonGrid(),
+                width: MediaQuery.of(context).size.width * 0.85,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: DisplayPanel(),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 7,
+              child: Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                ),
+                child: Column(
+                  spacing: 5,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          style: Theme.of(context).elevatedButtonTheme.style,
+                          onPressed: () {},
+                          icon: Icon(Icons.settings),
+                        ),
+                        IconButton(
+                          style: Theme.of(context).elevatedButtonTheme.style,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ResultHistoryScreen(),
+                              ),
+                            );
+                          },
+                          icon: Icon(Icons.history),
+                        ),
+                      ],
+                    ),
+                    Expanded(flex: 6, child: CalcButtonGrid()),
+                  ],
+                ),
               ),
             ),
           ],

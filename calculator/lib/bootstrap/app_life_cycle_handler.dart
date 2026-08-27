@@ -24,7 +24,7 @@ class _AppLifeCycleHandlerState extends State<AppLifeCycleHandler>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused ||
         state == AppLifecycleState.detached) {
-      final calcP = Provider.of<CalculatorProvider>(context);
+      final calcP = Provider.of<CalculatorProvider>(context, listen: false);
       calcP.saveBeforeClose();
     }
     super.didChangeAppLifecycleState(state);

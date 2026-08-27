@@ -38,7 +38,7 @@ class ResultHistoryScreen extends StatelessWidget {
               child: ListView.builder(
                 itemCount: hisP.history.length,
                 itemBuilder: (context, index) => Container(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 8),
                   child: (hisP.history.isEmpty)
                       ? Container(
                           alignment: Alignment.center,
@@ -60,11 +60,15 @@ class ResultHistoryScreen extends StatelessWidget {
                             children: [
                               Text(
                                 '${hisP.history[index][DatabaseService.cInput]}',
-                                style: Theme.of(context).textTheme.labelSmall,
+                                style: Theme.of(context).textTheme.bodySmall,
+                                textAlign: TextAlign.right,
+                                softWrap: true,
                               ),
                               Text(
                                 '= ${hisP.history[index][DatabaseService.cOutput]}',
-                                style: Theme.of(context).textTheme.labelSmall,
+                                style: Theme.of(context).textTheme.bodySmall,
+                                textAlign: TextAlign.right,
+                                softWrap: true,
                               ),
                               SizedBox(height: 5),
                             ],
@@ -74,24 +78,29 @@ class ResultHistoryScreen extends StatelessWidget {
               ),
             ),
             Divider(
-              color: Colors.black12,
+              color: Theme.of(context).colorScheme.primary,
               height: 0.5,
               thickness: 0.5,
               indent: 24,
               endIndent: 24,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  calcP.input,
-                  style: Theme.of(context).textTheme.displayMedium,
-                ),
-                Text(
-                  calcP.output,
-                  style: Theme.of(context).textTheme.displayMedium,
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    calcP.input,
+                    style: Theme.of(context).textTheme.displaySmall,
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                  ),
+                  Text(
+                    '= ${calcP.output}',
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ],
+              ),
             ),
           ],
         ),

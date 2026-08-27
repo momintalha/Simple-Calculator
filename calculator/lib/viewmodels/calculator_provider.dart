@@ -1,4 +1,5 @@
 import 'package:calculator/models/calculator_model.dart';
+import 'package:calculator/services/clipboard_service.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:calculator/viewmodels/history_provider.dart';
@@ -12,6 +13,7 @@ class CalculatorProvider extends ChangeNotifier {
   final String _operators = '+-×÷%.';
   final CalculatorModel _calculatorModel = CalculatorModel();
   final PreferencesService _prefsService = PreferencesService();
+  final ClipboardService _clipboardService = ClipboardService();
 
   bool _isdot = true;
 
@@ -20,7 +22,7 @@ class CalculatorProvider extends ChangeNotifier {
   bool get isResultShown => _calculatorModel.isResultShown;
 
   void appendOperator({required String operator}) {
-    if (_calculatorModel.input.length > 44) return;
+    if (_calculatorModel.input.length > 75) return;
 
     _calculatorModel.isResultShown = false;
     _isdot = true;
@@ -58,7 +60,7 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   void appendNumber({required String calcButtonValue}) {
-    if (_calculatorModel.input.length > 44) return;
+    if (_calculatorModel.input.length > 75) return;
 
     _calculatorModel.isResultShown = false;
 
@@ -117,7 +119,7 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   void appendDot() {
-    if (_calculatorModel.input.length > 44) return;
+    if (_calculatorModel.input.length > 75) return;
 
     _calculatorModel.isResultShown = false;
 
@@ -185,5 +187,9 @@ class CalculatorProvider extends ChangeNotifier {
     _calculatorModel.input = calc;
     _calculatorModel.output = res;
     notifyListeners();
+  }
+
+  Future<void> copyText({required String data}) async {
+    await _clipboardService.copyClipboardText(data: data);
   }
 }

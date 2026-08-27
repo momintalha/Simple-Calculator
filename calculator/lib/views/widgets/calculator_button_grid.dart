@@ -71,12 +71,25 @@ class CalcButtonGrid extends StatelessWidget {
                   },
                 );
               case '=':
-                return CalcButton(
-                  label: buttonGrid[index],
-                  buttonType: false,
-                  onTap: () {
+                return ElevatedButton(
+                  onPressed: () {
                     calcP.onTapEqual(hisP);
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shadowColor: Colors.lightBlueAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(16),
+                    ),
+                  ),
+                  child: Text(
+                    '=',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontFamily: 'Nunito',
+                    ),
+                  ),
                 );
               case '0' ||
                   '00' ||

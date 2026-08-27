@@ -10,41 +10,26 @@ class DisplayPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CalculatorProvider>(
       builder: (context, value, _) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerHighest,
-            borderRadius: BorderRadius.circular(35),
-          ),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
-                  child: MyTextField(
-                    value.input,
-                    maxLines: 3,
-                    alignment: Alignment.bottomRight,
-                    tFontSize: 40,
-                    tColor: Colors.grey,
-                  ),
-                ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          spacing: 10,
+          children: [
+            Expanded(
+              child: MyTextField(
+                value.input,
+                maxLines: 4,
+                textAlign: TextAlign.right,
+                isLarge: false,
               ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
-                  child: MyTextField(
-                    '= ${value.output}',
-                    maxLines: 1,
-                    alignment: Alignment.centerRight,
-                    tFontSize: (value.isResultShown) ? 40 : 30,
-                    tColor: Colors.white,
-                  ),
-                ),
+            ),
+            FittedBox(
+              child: MyTextField(
+                '= ${value.output}',
+                maxLines: 1,
+                textAlign: TextAlign.end,
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );

@@ -6,13 +6,11 @@ class CalcButton extends StatelessWidget {
   final String label;
   final bool buttonType;
   final VoidCallback onTap;
-  final VoidCallback? onLongTap;
 
   const CalcButton({
     super.key,
     required this.label,
     required this.onTap,
-    this.onLongTap,
     this.buttonType = true,
   });
 
@@ -24,9 +22,6 @@ class CalcButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         onTap();
-      },
-      onLongPress: () {
-        if (onLongTap != null) onLongTap!();
       },
       style: (buttonType)
           ? calcButtonStyle.numberButtonStyle

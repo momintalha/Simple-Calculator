@@ -66,9 +66,6 @@ class CalcButtonGrid extends StatelessWidget {
                   onTap: () {
                     calcP.onTapRemove();
                   },
-                  onLongTap: () {
-                    calcP.onTapRemove();
-                  },
                 );
               case '=':
                 return ElevatedButton(

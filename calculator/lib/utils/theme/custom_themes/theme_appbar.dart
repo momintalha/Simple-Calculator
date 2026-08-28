@@ -13,6 +13,7 @@ class ThemeAppbar {
       fontFamily: 'Montono',
       fontWeight: FontWeight.bold,
     ),
+    actionsPadding: EdgeInsets.only(right: 5),
   );
 
   static AppBarTheme darkTheme = AppBarTheme(
@@ -24,5 +25,6 @@ class ThemeAppbar {
       fontFamily: 'Montono',
       fontWeight: FontWeight.bold,
     ),
+    actionsPadding: EdgeInsets.only(right: 5),
   );
 }

@@ -22,8 +22,6 @@ class CalculatorProvider extends ChangeNotifier {
   bool get isResultShown => _calculatorModel.isResultShown;
 
   void appendOperator({required String operator}) {
-    if (_calculatorModel.input.length > 75) return;
-
     _calculatorModel.isResultShown = false;
     _isdot = true;
 
@@ -60,8 +58,6 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   void appendNumber({required String calcButtonValue}) {
-    if (_calculatorModel.input.length > 75) return;
-
     _calculatorModel.isResultShown = false;
 
     _calculatorModel.input += calcButtonValue;
@@ -70,6 +66,7 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   void onTapEqual(HistoryProvider provider) {
+    if (_calculatorModel.isResultShown) return;
     _calculatorModel.isResultShown = true;
     if (_calculatorModel.input.isNotEmpty &&
         _calculatorModel.output.isNotEmpty) {
@@ -119,8 +116,6 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   void appendDot() {
-    if (_calculatorModel.input.length > 75) return;
-
     _calculatorModel.isResultShown = false;
 
     if (_isdot && _calculatorModel.input.isNotEmpty) {
@@ -153,12 +148,12 @@ class CalculatorProvider extends ChangeNotifier {
       }
 
       if (temp.contains('e')) {
-        return temp.substring(0, 10) +
+        return temp.substring(0, 8) +
             temp.substring(temp.indexOf('e'), temp.length);
       }
 
-      if (temp.length > 12) {
-        return temp.substring(0, 12);
+      if (temp.length > 10) {
+        return temp.substring(0, 10);
       }
     }
 

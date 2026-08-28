@@ -23,8 +23,8 @@ class ThemeElevatedButton extends ThemeExtension<ThemeElevatedButton> {
   static ElevatedButtonThemeData darkTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       iconSize: 16,
-      iconColor: Colors.black,
-      backgroundColor: Color(0xffa9b1f4),
+      iconColor: Colors.white,
+      backgroundColor: Color(0xFF16253D),
       shadowColor: Colors.white,
       shape: CircleBorder(),
       elevation: 2,

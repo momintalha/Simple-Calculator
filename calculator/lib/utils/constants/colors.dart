@@ -19,8 +19,8 @@ class AppColors {
   static const Color numberButtonLight = Colors.white;
   static const Color numberButtonDark = Color(0xff16253d);
 
-  static const Color operatorButtonLight = Color(0xffc7f5f6);
-  static const Color operatorButtonDark = Color(0xff3a67aa);
+  static const Color operatorButtonLight = Color(0xffadedff);
+  static const Color operatorButtonDark = Color(0xff3c6997);
 
   //calcButtonlabel
   static const Color numberButtonLabelLight = Colors.white;

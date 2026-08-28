@@ -13,36 +13,50 @@ class ThemeText extends ThemeExtension<ThemeText> {
   static TextTheme lightTheme = TextTheme(
     bodySmall: TextStyle(
       color: Colors.black38,
+      fontSize: 22,
+      fontFamily: 'Inter',
+    ),
+    bodyMedium: TextStyle(
+      color: Colors.black,
       fontSize: 24,
-      fontFamily: 'Montono',
+      fontFamily: 'Inter',
     ),
     displaySmall: TextStyle(
       color: Colors.black54,
-      fontSize: 28,
-      fontFamily: 'Montono',
+      fontSize: 30,
+      fontFamily: 'JetBrainsMono',
+      fontWeight: FontWeight.w500,
     ),
     displayMedium: TextStyle(
       color: AppColors.textDark,
-      fontSize: 48,
-      fontFamily: 'Montono',
+      fontSize: 44,
+      fontFamily: 'JetBrainsMono',
+      fontWeight: FontWeight.w600,
     ),
   );
 
   static TextTheme darkTheme = TextTheme(
     bodySmall: TextStyle(
       color: Colors.white38,
+      fontSize: 22,
+      fontFamily: 'Inter',
+    ),
+    bodyMedium: TextStyle(
+      color: Colors.white,
       fontSize: 24,
-      fontFamily: 'Montono',
+      fontFamily: 'Inter',
     ),
     displaySmall: TextStyle(
       color: Colors.white38,
-      fontSize: 28,
-      fontFamily: 'Montono',
+      fontSize: 30,
+      fontFamily: 'JetBrainsMono',
+      fontWeight: FontWeight.w500,
     ),
     displayMedium: TextStyle(
       color: Colors.white,
-      fontSize: 48,
-      fontFamily: 'Montono',
+      fontSize: 44,
+      fontFamily: 'JetBrainsMono',
+      fontWeight: FontWeight.w600,
     ),
   );
 

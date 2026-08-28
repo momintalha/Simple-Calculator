@@ -38,7 +38,7 @@ class ResultHistoryScreen extends StatelessWidget {
               child: ListView.builder(
                 itemCount: hisP.history.length,
                 itemBuilder: (context, index) => Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.only(left: 5, right: 10),
                   child: (hisP.history.isEmpty)
                       ? Container(
                           alignment: Alignment.center,
@@ -70,7 +70,7 @@ class ResultHistoryScreen extends StatelessWidget {
                                 textAlign: TextAlign.right,
                                 softWrap: true,
                               ),
-                              SizedBox(height: 5),
+                              SizedBox(height: 10),
                             ],
                           ),
                         ),
@@ -85,19 +85,25 @@ class ResultHistoryScreen extends StatelessWidget {
               endIndent: 24,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(
+                left: 5,
+                right: 10,
+                top: 8,
+                bottom: 8,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
+                spacing: 5,
                 children: [
                   Text(
                     calcP.input,
-                    style: Theme.of(context).textTheme.displaySmall,
+                    style: Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.right,
                     softWrap: true,
                   ),
                   Text(
                     '= ${calcP.output}',
-                    style: Theme.of(context).textTheme.displaySmall,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),

@@ -8,6 +8,8 @@ class DisplayPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final calcP = Provider.of<CalculatorProvider>(context);
+
     return Consumer<CalculatorProvider>(
       builder: (context, value, _) {
         return Column(
@@ -15,11 +17,17 @@ class DisplayPanel extends StatelessWidget {
           spacing: 10,
           children: [
             Expanded(
-              child: MyTextField(
-                value.input,
-                maxLines: 4,
-                textAlign: TextAlign.right,
-                isLarge: false,
+              child: SingleChildScrollView(
+                reverse: true,
+                //physics: ,
+                child: MyTextField(
+                  value.input,
+                  maxLines: 8,
+                  textAlign: TextAlign.right,
+                  textStyle: (calcP.isResultShown)
+                      ? Theme.of(context).textTheme.displaySmall
+                      : Theme.of(context).textTheme.displayMedium,
+                ),
               ),
             ),
             FittedBox(
@@ -27,6 +35,9 @@ class DisplayPanel extends StatelessWidget {
                 '= ${value.output}',
                 maxLines: 1,
                 textAlign: TextAlign.end,
+                textStyle: (calcP.isResultShown)
+                    ? Theme.of(context).textTheme.displayMedium
+                    : Theme.of(context).textTheme.displaySmall,
               ),
             ),
           ],

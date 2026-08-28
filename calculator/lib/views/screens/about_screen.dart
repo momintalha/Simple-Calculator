@@ -136,8 +136,8 @@ class AboutScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: 16,
-                          height: 16,
+                          width: 18,
+                          height: 18,
                           child: InkWell(
                             onTap: () async {
                               await CalculatorProvider().copyText(
@@ -192,8 +192,8 @@ class AboutScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: 16,
-                          height: 16,
+                          width: 18,
+                          height: 18,
                           child: InkWell(
                             onTap: () async {
                               await CalculatorProvider().copyText(

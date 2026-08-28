@@ -38,14 +38,16 @@ class AppTheme {
           labelSmall: TextStyle(
             color: AppColors.numberButtonLabelDark,
             fontSize: 22,
-            fontFamily: 'Nunito',
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w500,
           ),
         ),
         operatorButtonTextTheme: TextTheme(
           labelSmall: TextStyle(
             color: AppColors.operatorButtonLabelDark,
             fontSize: 20,
-            fontFamily: 'Nunito',
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
@@ -83,14 +85,16 @@ class AppTheme {
           labelSmall: TextStyle(
             color: AppColors.numberButtonLabelLight,
             fontSize: 22,
-            fontFamily: 'Nunito',
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w500,
           ),
         ),
         operatorButtonTextTheme: TextTheme(
           labelSmall: TextStyle(
             color: AppColors.operatorButtonLabelDark,
             fontSize: 20,
-            fontFamily: 'Nunito',
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),

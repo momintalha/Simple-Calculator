@@ -4,14 +4,14 @@ class MyTextField extends StatelessWidget {
   final String text;
   final int maxLines;
   final TextAlign textAlign;
-  final bool isLarge;
+  final TextStyle? textStyle;
 
   const MyTextField(
     this.text, {
     super.key,
     required this.maxLines,
+    required this.textStyle,
     this.textAlign = TextAlign.right,
-    this.isLarge = true,
   });
 
   @override
@@ -24,9 +24,7 @@ class MyTextField extends StatelessWidget {
         textAlign: textAlign,
         softWrap: true,
         maxLines: maxLines,
-        style: (isLarge)
-            ? Theme.of(context).textTheme.displayMedium
-            : Theme.of(context).textTheme.displaySmall,
+        style: textStyle,
       ),
     );
   }

@@ -23,10 +23,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Calculator',
-          style: TextStyle(color: Colors.blue, fontFamily: 'Nunito'),
-        ),
+        title: Text('Calculator', style: TextStyle(color: Colors.blue)),
         centerTitle: false,
         actions: [
           IconButton(
@@ -47,11 +44,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         child: Column(
           children: [
             Expanded(
-              flex: 3,
+              flex: 4,
               child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.85,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  padding: const EdgeInsets.only(
+                    left: 10.0,
+                    right: 16,
+                    bottom: 18,
+                  ),
                   child: DisplayPanel(),
                 ),
               ),
@@ -59,7 +59,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             Expanded(
               flex: 7,
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.surfaceContainerHighest,
                   borderRadius: BorderRadius.only(
@@ -91,7 +91,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         ),
                       ],
                     ),
-                    Expanded(flex: 6, child: CalcButtonGrid()),
+                    Expanded(child: CalcButtonGrid()),
                   ],
                 ),
               ),

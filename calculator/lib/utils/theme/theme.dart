@@ -1,6 +1,7 @@
 import 'package:calculator/utils/constants/colors.dart';
 import 'package:calculator/utils/theme/custom_themes/theme_appbar.dart';
 import 'package:calculator/utils/theme/custom_themes/theme_elevated_button.dart';
+import 'package:calculator/utils/theme/custom_themes/theme_snackbar.dart';
 import 'package:calculator/utils/theme/custom_themes/theme_text.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class AppTheme {
     elevatedButtonTheme: ThemeElevatedButton.lightTheme,
     textTheme: ThemeText.lightTheme,
     appBarTheme: ThemeAppbar.lightTheme,
+    snackBarTheme: ThemeSnackbar.lightTheme,
     extensions: [
       ThemeElevatedButton(
         numberButtonStyle: ElevatedButton.styleFrom(
@@ -64,6 +66,7 @@ class AppTheme {
     elevatedButtonTheme: ThemeElevatedButton.darkTheme,
     textTheme: ThemeText.darkTheme,
     appBarTheme: ThemeAppbar.darkTheme,
+    snackBarTheme: ThemeSnackbar.darkTheme,
     extensions: [
       ThemeElevatedButton(
         numberButtonStyle: ElevatedButton.styleFrom(

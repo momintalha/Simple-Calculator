@@ -1,3 +1,4 @@
+import 'package:calculator/views/widgets/copyable_text.dart';
 import 'package:calculator/views/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/viewmodels/calculator_provider.dart';
@@ -19,7 +20,6 @@ class DisplayPanel extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 reverse: true,
-                //physics: ,
                 child: MyTextField(
                   value.input,
                   maxLines: 8,
@@ -30,14 +30,17 @@ class DisplayPanel extends StatelessWidget {
                 ),
               ),
             ),
-            FittedBox(
-              child: MyTextField(
-                '= ${value.output}',
-                maxLines: 1,
-                textAlign: TextAlign.end,
-                textStyle: (calcP.isResultShown)
-                    ? Theme.of(context).textTheme.displayMedium
-                    : Theme.of(context).textTheme.displaySmall,
+            CopyableText(
+              text: calcP.output,
+              child: FittedBox(
+                child: MyTextField(
+                  '= ${value.output}',
+                  maxLines: 1,
+                  textAlign: TextAlign.end,
+                  textStyle: (calcP.isResultShown)
+                      ? Theme.of(context).textTheme.displayMedium
+                      : Theme.of(context).textTheme.displaySmall,
+                ),
               ),
             ),
           ],

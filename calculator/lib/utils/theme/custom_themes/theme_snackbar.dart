@@ -16,12 +16,16 @@ class ThemeSnackbar {
     elevation: 4,
   );
 
-  static const SnackBarThemeData darkTheme = SnackBarThemeData(
+  static SnackBarThemeData darkTheme = SnackBarThemeData(
     backgroundColor: Colors.white,
     contentTextStyle: TextStyle(
-      color: Colors.black,
-      fontSize: 24,
-      fontFamily: 'Montono',
+      color: Colors.black87,
+      fontFamily: 'Inter',
+      fontSize: 14,
     ),
+    behavior: SnackBarBehavior.floating,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    actionTextColor: Colors.blueAccent,
+    elevation: 4,
   );
 }

@@ -56,7 +56,6 @@ class AboutScreen extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-
             AboutTile(
               icon: 'assets/icons/icons-copyright-48.png',
               iSize: 30,
@@ -220,12 +219,11 @@ class AboutScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             AboutTile(
               icon: 'assets/icons/icons-heart-48.png',
               iSize: 30,
               iconBackgroundColor: Color(0xffe5d7e0),
-              title: 'Thankyou for using Calculator!',
+              title: 'Thank you for using Calculator!',
               subtitle: 'Made with ❤️ and lots of ☕️',
               titleTextStyle: TextStyle(
                 color: Colors.black,

@@ -41,7 +41,11 @@ class AboutTile extends StatelessWidget {
             Text(title, style: titleTextStyle),
             Text(
               subtitle,
-              style: TextStyle(color: Colors.black54, fontSize: 14),
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 14,
+                fontFamily: 'Montono',
+              ),
             ),
           ],
         ),

@@ -9,10 +9,8 @@ class DisplayPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final calcP = Provider.of<CalculatorProvider>(context);
-
     return Consumer<CalculatorProvider>(
-      builder: (context, value, _) {
+      builder: (context, calcP, _) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           spacing: 10,
@@ -21,8 +19,8 @@ class DisplayPanel extends StatelessWidget {
               child: SingleChildScrollView(
                 reverse: true,
                 child: MyTextField(
-                  value.input,
-                  maxLines: 8,
+                  calcP.input,
+                  maxLines: 7,
                   textAlign: TextAlign.right,
                   textStyle: (calcP.isResultShown)
                       ? Theme.of(context).textTheme.displaySmall
@@ -34,7 +32,7 @@ class DisplayPanel extends StatelessWidget {
               text: calcP.output,
               child: FittedBox(
                 child: MyTextField(
-                  '= ${value.output}',
+                  '= ${calcP.output}',
                   maxLines: 1,
                   textAlign: TextAlign.end,
                   textStyle: (calcP.isResultShown)

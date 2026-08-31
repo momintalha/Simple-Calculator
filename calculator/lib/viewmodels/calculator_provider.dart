@@ -22,6 +22,8 @@ class CalculatorProvider extends ChangeNotifier {
   bool get isResultShown => _calculatorModel.isResultShown;
 
   void appendOperator({required String operator}) {
+    if (_calculatorModel.input.length > 99) return;
+
     _calculatorModel.isResultShown = false;
     _isdot = true;
 
@@ -58,10 +60,25 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   void appendNumber({required String calcButtonValue}) {
+    if (_calculatorModel.input.length > 99) return;
+
     _calculatorModel.isResultShown = false;
 
     _calculatorModel.input += calcButtonValue;
     _calculatorModel.output = '${_exprEvaluation()}';
+    notifyListeners();
+  }
+
+  void appendDot() {
+    if (_calculatorModel.input.length > 99) return;
+
+    _calculatorModel.isResultShown = false;
+
+    if (_isdot && _calculatorModel.input.isNotEmpty) {
+      _calculatorModel.input += '.';
+      _isdot = false;
+    }
+
     notifyListeners();
   }
 
@@ -115,17 +132,6 @@ class CalculatorProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void appendDot() {
-    _calculatorModel.isResultShown = false;
-
-    if (_isdot && _calculatorModel.input.isNotEmpty) {
-      _calculatorModel.input += '.';
-      _isdot = false;
-    }
-
-    notifyListeners();
-  }
-
   String? _exprEvaluation([String? s]) {
     String? temp = (s != null)
         ? s.replaceAll('×', '*').replaceAll('÷', '/')
@@ -170,12 +176,10 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   Future<void> saveBeforeClose() async {
-    if (_calculatorModel.input.isNotEmpty) {
-      await _prefsService.save(
-        calculation: _calculatorModel.input,
-        result: _calculatorModel.output,
-      );
-    }
+    await _prefsService.save(
+      calculation: _calculatorModel.input,
+      result: _calculatorModel.output,
+    );
   }
 
   void historyBack(String calc, String res) {

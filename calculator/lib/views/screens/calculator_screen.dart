@@ -59,7 +59,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             Expanded(
               flex: 7,
               child: Container(
-                padding: EdgeInsets.all(14),
+                padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.surfaceContainerHighest,
                   borderRadius: BorderRadius.only(
@@ -68,7 +68,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   ),
                 ),
                 child: Column(
-                  spacing: 5,
+                  spacing: 3,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
